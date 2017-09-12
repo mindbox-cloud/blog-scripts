@@ -2,9 +2,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
+var production = process.argv.indexOf("-p") > 0;
+
 const extractSass = new ExtractTextPlugin({
     filename: "[name].css",
-    disable: process.env.NODE_ENV === "development"
+    disable: !production
 });
 
 module.exports = {
@@ -45,9 +47,9 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: 'src/index.ejs',
+            template: production ? 'src/index.prod.ejs' : 'src/index.ejs',
             filename: 'index.html',
-            inject: false
+            inject: !production
         }),
         extractSass
     ]

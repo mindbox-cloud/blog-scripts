@@ -1,9 +1,5 @@
+<meta charset="UTF-8" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.min.js"></script>
 <div id="ab-calculator"></div>
-<script>
-    var st = document.createElement('style');
-    fetch("https://raw.githubusercontent.com/mindbox-moscow/blog-scripts/master/ab-calc/main.css").then(x => x.text()).then(x => st.innerText = x);
-    document.body.appendChild(st);
-    fetch("https://raw.githubusercontent.com/mindbox-moscow/blog-scripts/master/ab-calc/ab-calc.js").then(x => x.text()).then(x => eval(x));
-</script>
+<link rel="stylesheet" href="main.css" />

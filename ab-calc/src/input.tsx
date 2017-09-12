@@ -22,9 +22,15 @@ export const Input = (props: Props) => {
     };
 
     return (
-        <div>
-            <div className="test">{label}</div>
-            <input type="number" max="100" min="0" value={value} onChange={onChangeEvent} />
+        <div className="block-group">
+            <div className="block b70">
+                <div className="ab-test-label">{label}</div>
+            </div>
+            <span className="block b30">
+                <span className="ab-test-input-span">
+                    <input className="ab-test-input" type="number" max="100" min="0" value={value} onChange={onChangeEvent} />%
+                </span>
+            </span>
         </div>
     );
 };

@@ -11,9 +11,13 @@ export const Result = (props: Props) => {
         result
     } = props;
     return (
-        <div>
-            <div>{label}</div>
-            <div>{result}</div>
+        <div className="block-group">
+            <div className="b100 ab-test-group-size-container">
+                <span className="ab-test-group-size">
+                    {label}:
+                    <span>{result}</span>
+                </span>
+            </div>
         </div>
     );
 };

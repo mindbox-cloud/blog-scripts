@@ -24,10 +24,10 @@ export class Calculator extends React.Component<Props, State> {
         super();
 
         this.state = {
-            average: 0,
-            minimalDiff: 0,
-            variant1: 0,
-            variant2: 0
+            average: null,
+            minimalDiff: null,
+            variant1: null,
+            variant2: null
         }    
     }
 
@@ -65,7 +65,7 @@ export class Calculator extends React.Component<Props, State> {
             minimalDiff
         } = this.state;
 
-        if (minimalDiff == 0)
+        if (minimalDiff == 0 || minimalDiff == null)
             return 0;
 
         const p = average / 100;
@@ -82,7 +82,7 @@ export class Calculator extends React.Component<Props, State> {
             variant2
         } = this.state;
 
-        if (minimalDiff == 0)
+        if (minimalDiff == 0 || minimalDiff == null)
             return "";
 // |p1-p2|>1,96*корень((p1*(1-p1))/n1+(p2*(1-p2))/n2)
 
@@ -119,22 +119,27 @@ export class Calculator extends React.Component<Props, State> {
         return (
             <div>
                 <Input
-                    label="среднее значение тестируемого показателя"
+                    label="Среднее значение тестируемого показателя:"
                     value={average}
                     onChange={this.onAverageUpdate} />
                     
                 <Input
-                    label="минимальный эффект, который планируем получить"
+                    label="Минимальный эффект, который планируем получить:"
                     value={minimalDiff}
                     onChange={this.onMinimalDiffUpdate} />
 
                 <Result
-                    label="размер каждого варианта"
-                    result={minimalDiff == 0 ? "" : controlGroupSize} />
+                    label="Размер каждого варианта"
+                    result={minimalDiff == 0 || minimalDiff == null ? "" : controlGroupSize} />
 
-                <hr />
-
-                <div>Значение показателя</div>
+                <div className="block-group">
+                    <div className="block b70">&nbsp;</div>
+                    <div className="block b30">
+                        <span className="ab-variant-value">
+                            Значение показателя
+                        </span>
+                    </div>
+                </div>
 
                 <Input
                     label="Вариант 1"
@@ -146,7 +151,14 @@ export class Calculator extends React.Component<Props, State> {
                     value={variant2}
                     onChange={this.onVariant2Update} />
 
-                <div>{this.successfullVariant()}</div>
+                <div className="block-group">
+                    <div className="block b30">&nbsp;</div>
+                    <div className="block b70">
+                        <span className="ab-variant-result">
+                            {this.successfullVariant()}
+                        </span>
+                    </div>
+                </div>
             </div>
         );
     }
